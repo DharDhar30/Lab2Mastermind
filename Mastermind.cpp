@@ -30,7 +30,6 @@ Mastermind::Mastermind(bool de_bug) {
 void Mastermind::makeSecretCode() {
 
     bool used[10] = {false};
-
     for (int i = 0; i < code_len; i++) {
         int num = rand() % 10;
         while (used[num] == true) {
@@ -42,10 +41,8 @@ void Mastermind::makeSecretCode() {
 }
 
 void Mastermind::calculateFeedback(int *RR, int *RW, int currGuess[]) {
-
     *RR = 0;
     *RW = 0;
-
     bool usedSecret[5] = {false};
     bool usedGuess[5] = {false};
 
@@ -59,11 +56,8 @@ void Mastermind::calculateFeedback(int *RR, int *RW, int currGuess[]) {
     }
 
     for (int i = 0; i < code_len; i++) {
-
         if (usedGuess[i] == false) {
-
             for (int j = 0; j < code_len; j++) {
-
                 if (usedSecret[j] == false && usedGuess[i] == false && currGuess[i] == secretCode[j]) {
                     *RW = *RW + 1;
                     usedSecret[j] = true;
@@ -88,16 +82,13 @@ void Mastermind::printMatrix(int turn) {
 
     cout << endl;
     cout << "Guess Matrix:" << endl;
-
     for (int i = 0; i < turn; i++) {
-
         for (int j = 0; j < numCols; j++) {
             cout << codeMatrix[i][j] << " ";
         }
 
         cout << endl;
     }
-
     cout << endl;
 }
 
@@ -105,14 +96,10 @@ void Mastermind::getUserGuess(int currGuess[]) {
 
     string input;
     bool getInput = true;
-
     while (getInput) {
-
         getInput = true;
-
         cout << "Enter your " << code_len << "-digit guess (e.g., 12345): ";
         cin >> input;
-
         if (input.length() != code_len) {
             cout << "The input is the wrong length. Please try again with "
                  << code_len << " digits." << endl;
@@ -209,7 +196,6 @@ void Mastermind::playGame() {
         for (int i = 0; i < code_len; i++) {
             cout << secretCode[i];
         }
-
         cout << endl;
     }
 }
