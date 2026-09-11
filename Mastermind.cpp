@@ -22,7 +22,7 @@ Mastermind::Mastermind(bool de_bug) {
     debug = de_bug;
 
     cout << "Welcome to MasterMind!" << endl;
-    cout << "Can you guess the " << code_len << "digit secret code? (Digits do not repeat)" << endl;
+    cout << "Can you guess the " << code_len << "-digit secret code? (Digits do not repeat)" << endl;
 
     playGame();
 }
@@ -39,7 +39,6 @@ void Mastermind::makeSecretCode() {
         used[num] = true;
     }
 }
-
 void Mastermind::calculateFeedback(int *RR, int *RW, int currGuess[]) {
     *RR = 0;
     *RW = 0;
@@ -139,10 +138,16 @@ void Mastermind::playGame() {
     int turn = 0;
 
     makeSecretCode();
+    if (debug) {
+        cout << "In debug: Secret code is..." << endl;
+        for (int i = 0; i < code_len; i++) {
+            cout << secretCode[i] << " ";
+        }
 
+        cout << endl;
+    }
     while (won == false && turn < max_num_attempts) {
-
-        cout << "Turn " << turn + 1 << " out of " << max_num_attempts << endl;
+        cout << "Turn " << turn<< " out of " << max_num_attempts << endl;
         cout << "-------------------------" << endl;
 
         RR = 0;
@@ -176,7 +181,6 @@ void Mastermind::playGame() {
         }
 
         updateMatrix(turn, currGuess, RR, RW);
-
         printMatrix(turn + 1);
 
         if (RR == code_len) {
