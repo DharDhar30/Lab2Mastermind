@@ -7,6 +7,5 @@ int main() {
     srand(time(NULL)); // Seed the random number generator
     Mastermind game(true);
     //Mastermind game(false);
-    10;
     return 0;
 }
