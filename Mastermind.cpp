@@ -96,18 +96,18 @@ void Mastermind::getUserGuess(int currGuess[]) {
                  << code_len << " digits.\n";
         }
         else {
-            bool validDigits = true;
+            bool valid = true;
             for (int i = 0; i < code_len; i++) {
                 if (input[i] >= '0' && input[i] <= '9') {
                     currGuess[i] = input[i] - '0';
                 }
                 else {
-                    validDigits = false;
+                    valid = false;
                 }
             }
             cout << endl;
 
-            if (validDigits == false) {
+            if (valid == false) {
                 cout << "Invalid input. Only use numbers 0-9." << endl;
                 getInput = true;
             }
@@ -172,9 +172,7 @@ void Mastermind::playGame() {
         turn++;
     }
     if (won == false) {
-
         cout << "Game Over! You ran out of turns. The secret code was: ";
-
         for (int i = 0; i < code_len; i++) {
             cout << secretCode[i];
         }
